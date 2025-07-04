@@ -1,6 +1,8 @@
 # Chinese-ebook-downloader
 下载电子课本的轻量化网页小工具
 
+## [在线使用](https://ru.lckay.shop/ebook/download_ebook.html)
+    
 ## 项目简介
 
 这是一个基于网页的电子课本下载工具，专为从智慧中小学平台获取无水印电子课本而设计。用户只需输入电子课本的网页链接，工具即可自动解析并提供PDF下载链接。
