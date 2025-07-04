@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电子课本下载</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .download-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(135,206,235,0.15);
+        }
+
+        #downloadFrame {
+            display: none;
+        }
+
+        .error-msg {
+            color: #ff4444;
+            height: 20px;
+            margin-top: 10px;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 15px 25px;
+            border: 2px solid #87CEEB;
+            border-radius: 30px;
+            font-size: 18px;
+            font-family: '等线', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            box-shadow: 0 0 15px rgba(135,206,235,0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-text">📚</h1>
+        <div class="download-container">
+            <p class="sub-text">请输入智慧中小学平台电子课本的网页链接</p>
+            <input type="text" id="textbookUrl" placeholder="请输入完整链接" class="name-input">
+            <button class="nav-button" onclick="processLink()">解析链接</button>
+            <div class="error-msg" id="errorMsg"></div>
+        </div>
+    </div>
+
+    <script>
+        function processLink() {
+            const url = document.getElementById('textbookUrl').value;
+            const match = url.match(/contentId=([^&]+)/);
+            
+            if (match && match[1]) {
+                const contentId = match[1];
+                const pdfUrl = `https://r1-ndr.ykt.cbern.com.cn/edu_product/esp/assets_document/${contentId}.pkg/pdf.pdf`;
+                window.open(pdfUrl, '_blank');
+                document.getElementById('errorMsg').textContent = '';
+            } else {
+                document.getElementById('errorMsg').textContent = '无效链接，请检查格式';
+            }
+        }
+    </script>
+</body>
+</html>
